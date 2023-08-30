@@ -21,6 +21,8 @@ function WeatherApp() {
     const [error, setError] = useState("error-hide");
     const [message, setMessage] = useState("message-show");
 
+
+
     const checkWheather = async () => {
         const searchBox = document.getElementsByClassName('cityName');
         const cityname = searchBox[0].value;
@@ -80,13 +82,18 @@ function WeatherApp() {
         }
 
     }
+    const searchHandler = (event) => {
+        if (event.key === "Enter") {
+            checkWheather();
+        }
+    };
 
 
     return (
 
         <div className='container'>
             <div className="header">
-                <input type="text" placeholder=' Enter City Name' className='cityName' spellCheck="false" />
+                <input type="text" placeholder=' Enter City Name' className='cityName' spellCheck="false" onKeyUp={searchHandler} />
                 <button className="search" onClick={checkWheather}>
                     <img src={search} alt="" />
                 </button>
